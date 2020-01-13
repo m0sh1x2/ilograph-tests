@@ -1,0 +1,61 @@
+resources:
+- name: ModSecurity
+  subtitle: Processing Phases
+  color: navy
+  children:
+  - name: (wait)
+    
+  - name: Phase 1
+    subtitle: Request Headers
+    children: 
+    - name: post-read-request
+    - name: URI translation
+    - name: Header parsing
+    - name: access control
+    - name: authentication
+    - name: authorization
+    - name: MIME type checking
+    
+  - name: Phase 2
+    subtitle: Request Body
+    children: 
+    - name: fixups
+    
+  - name: Phase 3
+    subtitle: Response Headers
+    children: 
+    - name: Response Headers
+    
+  - name: RESPONSE
+    children: 
+    - name: document
+      
+  - name: Phase 4
+    subtitle: Response Body
+    children: 
+    - name: Response Body
+    
+  - name: Phase 5
+    subtitle: Logging
+    children: 
+    - name: logging
+    - name: cleanup
+    
+perspectives:
+- name: Sample
+  defaultRelationLabel: To
+  color: royalblue
+  relations:
+  - from: (wait)
+    to: Phase 1
+  - from: Phase 1
+    to: Phase 2
+  - from: Phase 2
+    to: Phase 3
+  - from: Phase 3
+    to: Phase 4
+  - from: Phase 4
+    to: Phase 5
+  - from: Phase 5
+    to: (wait)
+    arrowDirection: forward
