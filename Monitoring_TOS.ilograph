@@ -17,6 +17,10 @@ resources:
     
   - name: DDoS
     description: This is an extended description of Resource B
+    children: 
+    - name: Mitigated Attack
+    - name: Continious Attack
+    - name: Critical Attack
     
   - name: TOS
     subtitle: Terms of Service
@@ -32,22 +36,58 @@ resources:
     - name: Excessive use of CPU resources
     - name: Reselling
     - name: Abusive Behavior
-    
-    
+  
+  - name: Notifications
+    children: 
+    - name: Ticket
+    - name: SMS
+  
+  - name: Informational
+  - name: Warning
+  - name: Critical
+        
+  - name: Resolved
+  - name: Not Resolved
+  - name: Termination
     
 perspectives:
 - name: Sample
-  defaultRelationLabel: Depends on
+
   color: royalblue
   relations: 
+  
   - from: Monitoring
     to: Resource Abusers
-  
   - from: Monitoring
     to: DDoS
-  
   - from: Monitoring
     to: TOS
+  
+  - from: Resource Abusers
+    to: Ticket
+    
+  - from: DDoS
+    to: Ticket
+  
+  - from: TOS
+    to: Ticket
+  
+  - from: Ticket
+    to: Resolved
+    
+  - from: Ticket
+    to: SMS
+    
+  - from: SMS
+    to: Resolved
+    
+  - from: SMS
+    to: Not Resolved
+
+  
+  - from: Not Resolved
+    to: Termination
+   
     
   notes: |-
     Welcome to your ilograph.
