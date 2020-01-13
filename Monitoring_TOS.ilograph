@@ -53,7 +53,7 @@ resources:
   - name: Termination
     
 perspectives:
-- name: Sample
+- name: Notifications
 
   color: royalblue
   relations: 
