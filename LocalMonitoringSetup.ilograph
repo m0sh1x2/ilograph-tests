@@ -3,60 +3,41 @@ resources:
   color: navy
   children:
   - name: Server
-    
-  - name: iptables
-    
+    children: 
+    - name: iptables
+    - name: Firewall
+      
   - name: LXD
-    
-  - name: Haproxy
     children: 
-    - name: Port 3000
-    - name: Port 80
-    - name: Port 9091
-    - name: Port 22
+    - name: Haproxy
+      children: 
+      - name: Port 3000
+      - name: Port 80
+      - name: Port 9091
+      - name: Port 22
+        
+    - name: Monitoring
+      subtitle: Ubuntu 18.04
+      children: 
+      - name: Prometheus
+      - name: Grafana
+      - name: Push Gateway
+        
+    - name: Malware Tests
+      subtitle: Centos 7
+      children: 
+      - name: Virtualmin
+      - name: Clamav
+      - name: ModSecurity
       
-  - name: Monitoring
-    subtitle: Ubuntu 18.04
-    children: 
-    - name: Prometheus
-    - name: Grafana
-    - name: Push Gateway
-      
-  - name: Malware Tests
-    subtitle: Centos 7
-    children: 
-    - name: Virtualmin
-    - name: Clamav
-    - name: ModSecurity
-      
-  - name: Firewall
+
     
 perspectives:
 - name: Sample
   color: royalblue
   relations:
 
-  - from: Firewall
-    to: Server
-    
   - from: Server
-    to: iptables
-    
-  - from: iptables
     to: LXD
-    
-  - from: LXD
-    to: Haproxy
-    
-  - from: Haproxy
-    to: Monitoring
-  
-  - from: Haproxy
-    to: Malware Tests
-    
-  notes: |-
-    Welcome to your ilograph.
 
-    Your ilograph comes pre-populated with resources and a sample perspective. **The editable source is in the window to the left**.
-
-    Need Help? Check out the [introduction to IDL](https://blog.ilograph.com/posts/idl-1/) and the [IDL Spec](https://blog.ilograph.com/posts/idl-spec/). Additional resources are available on the [ilograph blog](https://blog.ilograph.com/).
+    
