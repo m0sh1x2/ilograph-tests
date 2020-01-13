@@ -56,6 +56,7 @@ resources:
     subtitle: Our Goal
   - name: Not Resolved
   - name: Termination
+    subtitle: Not our Goal
     
 perspectives:
 - name: Notifications
@@ -108,11 +109,94 @@ perspectives:
     
   - from: Re-Infected
     to: Not Resolved
-   
+
+- name: Infected
+  relations: 
+  - from: Monitoring
+    to: Ticket
     
-  notes: |-
-    Welcome to your ilograph.
+  - from: Ticket
+    to: Re-Infected
 
-    Your ilograph comes pre-populated with resources and a sample perspective. **The editable source is in the window to the left**.
+  - from: Ticket
+    to: Re-Infected
+  
+  - from: Ticket
+    to: Warning
+  
+  - from: Ticket
+    to: Critical
+    
+  - from: Critical
+    to: Re-Infected
+  
+  - from: Re-Infected
+    to: Termination
+    
+  - from: Warning
+    to: Cleaned
+    
+  - from: Cleaned
+    to: Success
+    
+  - from: Critical
+    to: Termination
 
-    Need Help? Check out the [introduction to IDL](https://blog.ilograph.com/posts/idl-1/) and the [IDL Spec](https://blog.ilograph.com/posts/idl-spec/). Additional resources are available on the [ilograph blog](https://blog.ilograph.com/).
+- name: Resource
+  
+  relations: 
+  - from: CPU
+    to: Informational
+  
+  - from: MySQL
+    to: Informational
+    
+  - from: Bandwidth
+    to: Informational
+  
+  - from: Informational
+    to: Warning
+    label: 24 hours
+    
+  - from: Warning
+    to: SMS
+    label: 24 hours
+    
+  - from: Warning
+    to: Ticket
+    label: 12 hours
+  
+  - from: Notifications
+    to: Not Resolved
+    label: 48 hours
+  
+  - from: Ticket
+    to: SMS
+    label: 12 hours
+  
+  - from: Not Resolved
+    to: Termination
+    
+  - from: Resource Abusers
+    to: Critical
+  
+  - from: Critical
+    to: SMS
+    label: 12 hours
+    
+  - from: Critical
+    to: Ticket
+    
+  - from: SMS
+    to: Termination
+    label: 24 hours
+  
+  - from: Ticket
+    to: Success
+    
+  - from: SMS
+    to: Success
+  
+    
+  
+    
