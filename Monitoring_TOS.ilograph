@@ -59,7 +59,7 @@ resources:
     subtitle: Our Goal
   - name: Not Resolved
   - name: Termination
-    subtitle: Not our Goal
+    subtitle: We have failed
     
 perspectives:
 - name: Notifications
@@ -119,12 +119,6 @@ perspectives:
   relations: 
   - from: Monitoring
     to: Ticket
-    
-  - from: Ticket
-    to: Re-Infected
-
-  - from: Ticket
-    to: Re-Infected
   
   - from: Ticket
     to: Warning
@@ -132,10 +126,13 @@ perspectives:
   - from: Ticket
     to: Critical
     
+    
   - from: Critical
     to: Re-Infected
-  
   - from: Re-Infected
+    to: SMS
+    
+  - from: SMS
     to: Termination
     
   - from: Warning
@@ -144,9 +141,6 @@ perspectives:
   - from: Cleaned
     to: Success
     
-  - from: Critical
-    to: Termination
-
 - name: Resource
   
   relations: 
