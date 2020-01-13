@@ -4,6 +4,7 @@ resources:
   color: navy
   children:
   - name: Monitoring
+    color: Green
     subtitle: Service Managmment
 
   - name: Resource Abusers
@@ -49,7 +50,9 @@ resources:
   
   - name: Informational
   - name: Warning
+    color: Orange
   - name: Critical
+    color: Red
         
   - name: Resolved
   - name: Success
@@ -111,6 +114,8 @@ perspectives:
     to: Not Resolved
 
 - name: Infected
+  color: Red
+  
   relations: 
   - from: Monitoring
     to: Ticket
