@@ -1,0 +1,57 @@
+resources:
+- name: Service Notification and Handling
+  subtitle: Resource, DDoS, Abuse, Copyright
+  color: navy
+  children:
+  - name: Monitoring
+    subtitle: Service Managmment
+
+  - name: Resource Abusers
+    subtitle: Resource Abusers
+    children: 
+    - name: CPU
+    - name: MySQL
+    - name: Bandwidth
+    - name: Disk
+    - name: IO
+    
+  - name: DDoS
+    description: This is an extended description of Resource B
+    
+  - name: TOS
+    subtitle: Terms of Service
+    children: 
+    - name: DMCA
+    - name: Email Spam
+    - name: Porn
+    - name: Malware Distribution
+    - name: Torrents
+    - name: Bad Security Practices
+    - name: Excessive DMCA requests
+    - name: Excessive use of MySQL resources
+    - name: Excessive use of CPU resources
+    - name: Reselling
+    - name: Abusive Behavior
+    
+    
+    
+perspectives:
+- name: Sample
+  defaultRelationLabel: Depends on
+  color: royalblue
+  relations: 
+  - from: Monitoring
+    to: Resource Abusers
+  
+  - from: Monitoring
+    to: DDoS
+  
+  - from: Monitoring
+    to: TOS
+    
+  notes: |-
+    Welcome to your ilograph.
+
+    Your ilograph comes pre-populated with resources and a sample perspective. **The editable source is in the window to the left**.
+
+    Need Help? Check out the [introduction to IDL](https://blog.ilograph.com/posts/idl-1/) and the [IDL Spec](https://blog.ilograph.com/posts/idl-spec/). Additional resources are available on the [ilograph blog](https://blog.ilograph.com/).
