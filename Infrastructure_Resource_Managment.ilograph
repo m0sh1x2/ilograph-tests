@@ -1,0 +1,229 @@
+resources:
+- name: Infrastructure Resource Managment
+  subtitle: CPU and MySQL usage
+  color: navy
+  children:
+  - name: Service Load
+    subtitle: Manual resource handling process.
+  - name: CPU Usage
+    children: 
+    - name: Cache
+      children: 
+      - name: Disk Cache
+      - name: Object Cache
+      - name: Database Cache
+      
+    - name: TTFB
+      subtitle: Time To First Byte
+      children: 
+      - name: Under 100ms
+      - name: Cached Request
+      
+    - name: WPX Cloud
+      subtitle: Optimal Content Delivery
+      children: 
+      - name: Cache-Control
+      - name: HIT or MISS
+      
+    - name: Bots
+      subtitle: Abusive Crawlers
+      children: 
+      - name: Search Engine Bots
+      - name: SEO Inteligence Crawlers
+      - name: Performance Benchmark Crawlers
+      - name: Abusive Vulnerability Scanners
+      - name: SEO Spam Crawlers
+        
+    - name: PHP Version
+      children: 
+      - name: Active Support
+      - name: Newest On Server 
+      
+    - name: Infections
+      children: 
+      - name: Backdoors
+      - name: Shells
+      - name: Resource Eaters
+        
+    - name: Bad Plugins
+      children: 
+      - name: Backups
+      - name: View Counters
+      - name: Cache Disablers
+        subtitle: ezoic-integration
+        
+    - name: Dynamic Requests
+      subtitle: Resources managed by PHP
+      children: 
+      - name: admin-ajax.php
+        subtitle: WordPress Ajax Requests
+        children: 
+        - name: View Counters
+        - name: Self-Hosted Analytics
+        - name: Image Optimizers
+        - name: Backup Generators
+        
+      - name: wp-cron.php
+        subtitle: Embedded WordPress cronjobs
+        children: 
+        - name: Check the Cron Schedule
+        - name: Try Debug each cronjob
+        - name: Deactivate the wp-cron functionality
+          subtitle: Just replace it with a real cronjob.
+       
+      - name: wp-json
+        subtitle: WordPress JSON api
+        
+      - name: wc-api
+        subtitle: WooCommerce API
+        
+      - name: 404 Pages
+        subtitle: 404 Not Found Pages
+        
+      - name: 301 Redirects
+        subtitle: 301 redirects managed via PHP
+        children: 
+        - name: HTTP to HTTPS redirects
+        - name: 404 to 301 redirects
+        - name: Similar Posts Redirects
+        - name: www to non-www and vice-versa
+        - name: API Authentication redirects
+    
+  - name: Tools
+    subtitle: Monitoring Tools
+    children: 
+
+    - name: Resource Managment
+      subtitle: CPU and MySQL  
+      children: 
+      - name: Nagiosgraph
+        subtitle: CPU and MySQL Usage
+        children: 
+        - name: cpu_user_stats
+        - name: mysql_user_stats
+        
+      - name: Kibana
+        subtitle: Bandwidth usage and request statistics
+        children: 
+        - name: WPX Cloud
+        - name: Apache
+        
+      - name: Grafana
+        subtitle: Process monitoring for all servers
+        children: 
+        - name: Process hits per user
+        - name: Process usage per site
+          
+      - name: Access Logs
+        subtitle: Basic Assess Log Managment for all servers
+        children: 
+        - name: less
+        - name: awk
+        - name: grep
+        - name: tail
+      
+    - name: Process Managment
+      subtitle: Automated and Manual
+      children: 
+      - name: New Relic
+        subtitle: PHP Agent
+        children: 
+        - name: Transactions
+        - name: Query Response Time
+        - name: Slow Queries
+        - name: Advanced Performance Evaluation
+        - name: Advanced Hook & Action Statistics
+        
+      - name: top
+        subtitle: Process Managmnet
+        
+      - name: ps
+        subtitle: Process Status  
+        children: 
+        - name: ps aux
+        - name: ps a --forest
+          
+      - name: mysqladmin
+        children: 
+        - name: processlist
+          
+      - name: Query Monitor
+        children: 
+        - name: Slow Queries
+        - name: API Calls
+        - name: Hooks & Actions
+        - name: Requests
+          
+      - name: WP Profile
+        children: 
+        - name: profile stage
+        - name: profile hook
+        - name: profile stage --url
+        - name: profile stage --orderby=field1
+          
+  - name: MySQL Usage
+    subtitle: Another resource
+    description: This is an extended description of Resource B
+    children: 
+    - name: Bad Queries
+      children: 
+      - name: High Memory Usage
+      - name: UPDATE INSERT DELETE
+      - name: Slow Queries
+      - name: Unoptimized Queries
+        
+    - name: Database Size
+      children: 
+      - name: Logs
+        children: 
+        - name: Analytic logs
+        - name: Debug logs
+        - name: Traffic Logs
+        - name: Custom Logs
+          
+      - name: wp_postmeta
+        children: 
+        - name: Post Drafts
+        - name: Deleted Posts
+        - name: Other Related
+          
+      - name: wp_commentmeta
+        children: 
+        - name: Spam Comment Data
+        - name: Too Many Comments
+          
+      - name: wp_posts
+        children: 
+        - name: Spam Posts
+        - name: Too Many Posts
+          
+      - name: Old Plugin Records
+        children: 
+        - name: Additional Logs
+        - name: Old Data
+          
+perspectives:
+- name: Sample
+  # defaultRelationLabel: Depends on
+  color: royalblue
+  relations:
+  - from: Service Load
+    to: CPU Usage
+    label: Depends On
+  
+    
+  # Tools
+  
+  - from: Service Load
+    to: MySQL Usage
+    label: Depends On
+    
+  - from: Service Load
+    to: Tools
+    label: Managed with
+
+  - from: Tools
+    to: CPU Usage
+  - from: Tools
+    to: MySQL Usage
+
