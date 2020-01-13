@@ -47,6 +47,8 @@ resources:
   - name: Critical
         
   - name: Resolved
+  - name: Success
+    subtitle: Our Goal
   - name: Not Resolved
   - name: Termination
     
@@ -84,9 +86,11 @@ perspectives:
   - from: SMS
     to: Not Resolved
 
-  
   - from: Not Resolved
     to: Termination
+    
+  - from: Resolved
+    to: Success
    
     
   notes: |-
