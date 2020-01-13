@@ -37,6 +37,11 @@ resources:
     - name: Reselling
     - name: Abusive Behavior
   
+  - name: Infected
+    children: 
+    - name: Cleaned
+    - name: Re-Infected
+      
   - name: Notifications
     children: 
     - name: Ticket
@@ -68,6 +73,12 @@ perspectives:
   - from: Resource Abusers
     to: Ticket
     
+  - from: Monitoring
+    to: Infected
+  
+  - from: Infected
+    to: Notifications
+    
   - from: DDoS
     to: Ticket
   
@@ -91,6 +102,12 @@ perspectives:
     
   - from: Resolved
     to: Success
+  
+  - from: Cleaned
+    to: Resolved
+    
+  - from: Re-Infected
+    to: Not Resolved
    
     
   notes: |-
